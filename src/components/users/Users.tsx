@@ -39,7 +39,7 @@ const Users: React.FC = () => {
       setIsEditMode(true);
       fetchUserData(userId);
     }
-  }, [location]);
+  }, [location, getQueryParam]);
 
   const fetchUserData = async (userId: string) => {
     try {

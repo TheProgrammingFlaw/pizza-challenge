@@ -155,7 +155,7 @@ const Manage: React.FC = () => {
         </table>
 
         {/* Delete User Pop-up*/}
-        {selectedUser && selectedUser.type == 'delete' && (
+        {selectedUser && selectedUser.type === 'delete' && (
           <div className="popup">
             <div className="popup-inner">
               <h2>Delete {selectedUser.name}'s User</h2>
@@ -173,7 +173,7 @@ const Manage: React.FC = () => {
         )}
 
         {/* Buy Pizza Pop-up */}
-        {selectedUser && selectedUser.type == 'buy' && (
+        {selectedUser && selectedUser.type === 'buy' && (
           <div className="popup">
             <div className="popup-inner">
               <h2>Buy Pizza for {selectedUser.name}</h2>
