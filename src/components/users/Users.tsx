@@ -1,5 +1,5 @@
 import './Users.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 /*
@@ -28,10 +28,13 @@ const Users: React.FC = () => {
 
   const [isEditMode, setIsEditMode] = useState(false);
 
-  const getQueryParam = (param: string) => {
-    const searchParams = new URLSearchParams(location.search);
-    return searchParams.get(param);
-  };
+  const getQueryParam = useCallback(
+    (param: string) => {
+      const searchParams = new URLSearchParams(location.search);
+      return searchParams.get(param);
+    },
+    [location.search]
+  );
 
   useEffect(() => {
     const userId = getQueryParam('userId');
