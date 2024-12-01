@@ -1,47 +1,100 @@
-# Getting Started with Create React App
+# 🍕 Pizza Challenge - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend implementation for the **Pizza Eating Challenge** app, which manages users, virtual currency, pizza purchases, and a leaderboard system built with React and TypeScript.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **User Management:** Create, update, delete, and manage players.
+- **Pizza Logging:** Users can log pizzas only after purchasing them.
+- **Leaderboard:** Displays players ranked by the number of pizzas eaten.
+- **Real-Time Rank Updates:** Ensures the leaderboard reflects the latest data.
 
-### `npm start`
+## 🛠️ Technology Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **React.js**: Frontend framework for building the UI.
+- **TypeScript**: A superset of JavaScript that adds type checking.
+- **Axios**: For making HTTP requests to the backend API.
+- **React Router**: For managing routes and navigation.
+- **SocketIO**: For real-time updates.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📋 Setup Instructions
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (>= 14.x)
+- npm (>= 6.x) or yarn
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   git clone https://github.com/TheProgrammingFlaw/pizza-challenge.git
+   cd pizza-challenge
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install dependencies:
 
-### `npm run eject`
+   Using npm:
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   Or using yarn:
+   ```bash
+   yarn install
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Set up environment variables:
+   
+   Create a `.env` file at the root of the project and add the necessary environment variables for Firebase, API URLs, and other configurations.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   Example `.env`:
+   ```plaintext
+   REACT_APP_FIREBASE_API_KEY=your-firebase-api-key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your-firebase-auth-domain
+   REACT_APP_FIREBASE_PROJECT_ID=your-firebase-project-id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your-firebase-storage-bucket
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-firebase-sender-id
+   REACT_APP_FIREBASE_APP_ID=your-firebase-app-id
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. Start the development server:
 
-## Learn More
+   Using npm:
+   ```bash
+   npm start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   Or using yarn:
+   ```bash
+   yarn start
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-# pizza-challenge
+   Visit `http://localhost:3000` to view the application.
+
+## Features
+
+- **Home Page**: The homepage provides buttons to:
+  - Register a new user
+  - View the leaderboard
+  - Manage existing players
+
+- **New User Registration**: Users can enter their name, age, and gender to register a new player. Upon registration, they are assigned a default balance of 500 coins.
+
+- **Leaderboard**: Displays the real-time ranking of players based on the number of pizzas logged.
+
+- **Manage Players**: 
+  - View all players
+  - Edit player information
+  - Buy pizzas (using coins)
+  - Log pizzas eaten
+  - View transaction history for each player
+
+## Deployment
+
+The app is designed to be deployed on platforms like **Netlify**.
+
+## 🏗️ Contributors
+
+- [**TheProgrammingFlaw**](https://github.com/TheProgrammingFlaw)
