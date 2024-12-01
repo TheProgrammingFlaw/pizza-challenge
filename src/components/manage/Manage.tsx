@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { backendServiceUrl } from '../../constants';
 
 const actionMapping: { [key: string]: string } = {
   pizzaLogged: "Pizza eaten",
@@ -22,7 +23,7 @@ const Manage: React.FC = () => {
 
   const fetchConstants = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/api/getConfigs');
+      const response = await axios.get(`${backendServiceUrl}/api/getConfigs`);
       const { pizzaCost } = response.data;
       setPizzaCost(pizzaCost);
     } catch (error) {
@@ -32,7 +33,7 @@ const Manage: React.FC = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/api/getUsers');
+      const response = await axios.get(`${backendServiceUrl}/api/getUsers`);
       setUsers(response.data.users);
     } catch (error) {
       alert('Error fetching users.');
@@ -42,7 +43,7 @@ const Manage: React.FC = () => {
 
   const deleteUser = async (userId: string) => {
     try {
-      await axios.delete(`http://127.0.0.1:5000/api/deleteUser/${userId}`);
+      await axios.delete(`${backendServiceUrl}/api/deleteUser/${userId}`);
       fetchUsers();
     } catch (error) {
       alert('Error deleting user.');
@@ -51,7 +52,7 @@ const Manage: React.FC = () => {
 
   const fetchUserPendingCoins = async (userId: string) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:5000/api/getUserCoins/${userId}`);
+      const response = await axios.get(`${backendServiceUrl}/api/getUserCoins/${userId}`);
       return response.data.balance;
     } catch (error) {
       alert('Error fetching pending coins.');
@@ -61,7 +62,7 @@ const Manage: React.FC = () => {
 
   const fetchPizzaAvailableForLogging = async (userId: string) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:5000/api/getAvailablePizzasForLogging/${userId}`);
+      const response = await axios.get(`${backendServiceUrl}/api/getAvailablePizzasForLogging/${userId}`);
       return response.data.availableToLog;
     } catch (error) {
       alert('Error fetching pizza availability.');
@@ -71,7 +72,7 @@ const Manage: React.FC = () => {
 
   const buyPizza = async (userId: string, numberOfPizzas: number) => {
     try {
-      await axios.post('http://127.0.0.1:5000/api/buyPizza', {
+      await axios.post(`${backendServiceUrl}/api/buyPizza`, {
         userId,
         numberOfPizzas,
       });
@@ -84,7 +85,7 @@ const Manage: React.FC = () => {
 
   const logPizza = async (userId: string, numberOfPizzas: number) => {
     try {
-      await axios.post('http://127.0.0.1:5000/api/logPizza', {
+      await axios.post(`${backendServiceUrl}/api/logPizza`, {
         userId,
         numberOfPizzas,
       });
@@ -97,7 +98,7 @@ const Manage: React.FC = () => {
 
   const fetchPizzaHistory = async (userId: string) => {
     try {
-      const response = await axios.post(`http://127.0.0.1:5000/api/getTransactionsByFilter`, {
+      const response = await axios.post(`${backendServiceUrl}/api/getTransactionsByFilter`, {
         userId,
       });
       console.log(response.data);

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { backendServiceUrl } from '../../constants';
+// https://pizza-challenge-backend-1.onrender.com
 // const POLLING_INTERVAL = 5000;
 
 const Leaderboard: React.FC = () => {
@@ -10,7 +12,7 @@ const Leaderboard: React.FC = () => {
 
   useEffect(() => {
 
-    const socket = io('http://127.0.0.1:5000', {
+    const socket = io(`${backendServiceUrl}`, {
       transports: ['websocket']
     });
 
@@ -33,7 +35,7 @@ const Leaderboard: React.FC = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/api/getUsers');
+      const response = await axios.get(`${backendServiceUrl}/api/getUsers`);
       setUsers(response.data.users);
     } catch (error) {
       alert('Error fetching users.');

@@ -2,6 +2,7 @@ import './Users.css';
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { backendServiceUrl } from '../../constants';
 /*
 ** Direct Firebase connection **
 import { collection, addDoc } from 'firebase/firestore';
@@ -46,7 +47,7 @@ const Users: React.FC = () => {
 
   const fetchUserData = async (userId: string) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:5000/api/getUser/${userId}`);
+      const response = await axios.get(`${backendServiceUrl}/api/getUser/${userId}`);
       const user = response.data.user;
       setFormData({
         name: user.name,
@@ -92,7 +93,7 @@ const Users: React.FC = () => {
     try {
       if (isEditMode) {
         const userId = getQueryParam('userId');
-        await axios.put(`http://127.0.0.1:5000/api/updateUser/${userId}`, {
+        await axios.put(`${backendServiceUrl}/api/updateUser/${userId}`, {
           name: formData.name,
           age: Number(formData.age),
           gender: formData.gender,
@@ -100,7 +101,7 @@ const Users: React.FC = () => {
         alert('User updated successfully');
         navigate('/manage');
       } else {
-        await axios.post('http://127.0.0.1:5000/api/createUser', {
+        await axios.post(`${backendServiceUrl}/api/createUser`, {
           name: formData.name,
           age: Number(formData.age),
           gender: formData.gender,
